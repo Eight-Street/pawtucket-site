@@ -365,3 +365,14 @@ table.dir td { color: var(--ink-soft); white-space: nowrap; }
 .sig-line { font-size: 16px !important; color: var(--ink-soft); margin-top: 4px !important; }
 .page-head h1 { max-width: 900px; }
 .letter .signature { font-family: "Allura", cursive; font-size: 56px; line-height: 1; }
+
+/* v5: lighter Need help band, separated from footer */
+.need-help { background: var(--sand); color: var(--ink); border-top: 1px solid var(--line); }
+.need-help h2 { color: var(--navy-deep); }
+.need-help .need-phone a { color: var(--navy-deep); }
+.need-help .need-phone svg { color: var(--green-dark); }
+.need-help .go-link { color: var(--green-dark); }
+.need-help .go-link:hover { color: var(--brick-dark); }
+.need-help .open-status.is-open { color: var(--green-dark); }
+.need-help .open-status.is-closed { color: #7a5413; }
+.site-footer { border-top: 4px solid var(--gold); }
