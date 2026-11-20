@@ -10,7 +10,7 @@ The *feel* of Phase 1: a reskin of the current site built around hospitality. Re
 
 ## Pages
 
-- `index.html`: Home, with the concierge chips, "Start here" paths, popular services, a draft welcome from the Mayor-elect, Get involved, and Need help
+- `index.html`: Home
 - `help/`: every service, grouped by task, with an "I'm looking for…" filter
 - `departments/`: departments A to Z, with a filter
 - `meet-the-mayor/`: a draft bio adapted from deliverforpawtucket.com
@@ -28,3 +28,9 @@ The *feel* of Phase 1: a reskin of the current site built around hospitality. Re
 Plain static HTML/CSS/JS, served by GitHub Pages from `main`. There is no build step. Edit the HTML files directly.
 
 The site sets `noindex, nofollow` so search engines don't index it.
+
+## Rebuilt City pages (Nov 20)
+
+- `city/<slug>/`: 24 City pages rebuilt on the new layout, with content condensed from the current pawtucketri.gov. Deeper sub-pages (for example, birth certificates) still link to the current site.
+- `share-an-idea/`, `city/contact/`: demo forms. They validate and show a thank-you, but nothing is sent or stored.
+- `news/`: the five most recent City posts, each with its own article page.

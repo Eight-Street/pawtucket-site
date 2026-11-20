@@ -74,3 +74,42 @@
   update();
   setInterval(update, 60000);
 })();
+
+// Demo forms: validate, then show a thank-you. Nothing is sent or stored.
+(function () {
+  document.querySelectorAll('fieldset[data-max]').forEach(function (fs) {
+    var max = parseInt(fs.getAttribute('data-max'), 10);
+    fs.addEventListener('change', function () {
+      var boxes = fs.querySelectorAll('input[type=checkbox]');
+      var n = fs.querySelectorAll('input[type=checkbox]:checked').length;
+      boxes.forEach(function (b) { if (!b.checked) b.disabled = n >= max; });
+    });
+  });
+  document.querySelectorAll('form.demo-form').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.querySelectorAll('.err').forEach(function (x) { x.remove(); });
+      form.querySelectorAll('.invalid').forEach(function (x) { x.classList.remove('invalid'); });
+      var first = null;
+      function flag(el, msg) {
+        var p = document.createElement('p'); p.className = 'err'; p.textContent = msg;
+        (el.closest('fieldset') || el.closest('label') || el).appendChild(p);
+        if (el.classList) el.classList.add('invalid');
+        if (!first) first = el;
+      }
+      form.querySelectorAll('input[required]:not([type=radio]), textarea[required], select[required]').forEach(function (el) {
+        if (!el.value.trim()) flag(el, 'This is required.');
+        else if (el.type === 'email' && !/^\S+@\S+\.\S+$/.test(el.value)) flag(el, 'Enter a valid email address.');
+      });
+      form.querySelectorAll('fieldset').forEach(function (fs) {
+        var radios = fs.querySelectorAll('input[type=radio][required]');
+        if (radios.length && !fs.querySelector('input[type=radio]:checked')) flag(fs, 'Please choose one.');
+        if (fs.hasAttribute('data-max') && !fs.querySelector('input[type=checkbox]:checked')) flag(fs, 'Choose at least one.');
+      });
+      if (first) { (first.focus ? first : form).focus(); first.scrollIntoView({ block: 'center', behavior: 'smooth' }); return; }
+      var thanks = form.nextElementSibling;
+      form.hidden = true;
+      if (thanks) { thanks.hidden = false; thanks.setAttribute('tabindex', '-1'); thanks.focus(); }
+    });
+  });
+})();
