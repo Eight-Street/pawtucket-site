@@ -250,3 +250,19 @@ a.card:hover { border-color: var(--green); }
 .chip:hover { border-color: var(--green); }
 .finder input:focus { border-color: var(--green-dark); box-shadow: 0 0 0 3px rgba(87,175,103,.25); }
 :focus-visible { outline-color: var(--gold-dark); }
+
+/* v3: real hero photos */
+.hero-portrait img {
+  width: 330px; max-height: none; aspect-ratio: 755 / 900; object-fit: cover; object-position: center top;
+  border: 5px solid var(--gold); border-bottom: none; border-radius: 180px 180px 0 0; filter: drop-shadow(0 12px 30px rgba(0,0,0,.45));
+}
+@media (max-width: 820px) { .hero-portrait img { width: 220px; } }
+.hero {
+  background:
+    linear-gradient(90deg, rgba(18,30,46,.90) 0%, rgba(18,30,46,.70) 42%, rgba(18,30,46,.15) 100%),
+    url("hero-background.jpg") center 70% / cover no-repeat,
+    var(--navy-deep);
+}
+@media (max-width: 820px) {
+  .hero { background: linear-gradient(180deg, rgba(18,30,46,.88) 0%, rgba(18,30,46,.6) 60%, rgba(18,30,46,.3) 100%), url("hero-background.jpg") 30% center / cover no-repeat, var(--navy-deep); }
+}
